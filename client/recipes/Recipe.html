@@ -3,12 +3,19 @@
         <h3>
             {{name}}
         </h3>
+        <i class="fa fa-trash">
+        </i>
+        <i class="fa fa-pencil">
+        </i>
+        {{#if $.Session.get 'editMode'}}
+        {{> quickForm collection="Recipes" id=updateRecipeId type="update" doc=this autosave=true}}
+        {{else}}
         <p>
             {{desc}}
         </p>
         <p>
-            {{#each ingredients}}
-            <span class="ingredient">
+            {{#each ingridients}}
+            <span class="ingridients">
                 {{name}} - {{amount}}
             </span>
             {{/each}}
@@ -24,6 +31,7 @@
         <button class="btn-primary toggle-menu">
             Add to menu
         </button>
+        {{/if}}
         {{/if}}
     </article>
 </template>
